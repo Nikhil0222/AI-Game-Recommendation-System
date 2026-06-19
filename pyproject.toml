@@ -1,0 +1,45 @@
+[project]
+name = "gamemind"
+version = "0.1.0"
+description = "GameMind: AI video game recommendation platform powered by FastAPI, LangChain, OpenAI, and ChromaDB."
+requires-python = ">=3.12"
+dependencies = [
+    "chromadb>=0.5.0",
+    "fastapi>=0.111.0",
+    "langchain>=0.2.0",
+    "langchain-openai>=0.1.8",
+    "numpy>=1.26.0",
+    "pydantic>=2.7.0",
+    "pydantic-settings>=2.2.1",
+    "python-dotenv>=1.0.1",
+    "structlog>=24.1.0",
+    "tenacity>=8.3.0",
+    "uvicorn[standard]>=0.30.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "httpx>=0.27.0",
+    "pytest>=8.2.0",
+    "pytest-cov>=5.0.0",
+    "pytest-mock>=3.14.0",
+    "ruff>=0.4.0",
+]
+
+[build-system]
+requires = ["setuptools>=69.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["gamemind*"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=gamemind --cov-report=term-missing --cov-fail-under=90"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

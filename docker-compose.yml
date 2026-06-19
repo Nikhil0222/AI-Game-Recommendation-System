@@ -1,0 +1,15 @@
+services:
+  gamemind:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      GAMEMIND_CHROMA_PATH: /app/.chroma
+      GAMEMIND_DATASET_PATH: /app/data/sample_games.jsonl
+    volumes:
+      - gamemind_chroma:/app/.chroma
+
+volumes:
+  gamemind_chroma:
